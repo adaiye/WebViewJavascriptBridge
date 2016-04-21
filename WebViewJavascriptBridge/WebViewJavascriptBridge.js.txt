@@ -37,7 +37,7 @@
 	}
 	
 	function callHandler(handlerName, data, responseCallback) {
-        console.log('callHandler ' + handlerName + ' with data ' + data))
+        console.log('callHandler ' + handlerName + ' with data ' + data)
 		_doSend({ handlerName:handlerName, data:data }, responseCallback)
 	}
 	
