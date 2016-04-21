@@ -37,6 +37,7 @@
 	}
 	
 	function callHandler(handlerName, data, responseCallback) {
+        console.log('callHandler ' + handlerName + ' with data ' + data))
 		_doSend({ handlerName:handlerName, data:data }, responseCallback)
 	}
 	
@@ -99,6 +100,7 @@
 		}
 	}
 
+    console.log('start create WebViewJavascriptBridge')
 	window.WebViewJavascriptBridge = {
 		init: init,
 		send: send,
@@ -109,9 +111,11 @@
 	}
 
 	var doc = document
-	_createQueueReadyIframe(doc)
+    _createQueueReadyIframe(doc)
+    console.log('start create Events')
 	var readyEvent = doc.createEvent('Events')
 	readyEvent.initEvent('WebViewJavascriptBridgeReady')
 	readyEvent.bridge = WebViewJavascriptBridge
-	doc.dispatchEvent(readyEvent)
+    doc.dispatchEvent(readyEvent)
+    console.log('end WebViewJavascriptBridge')
 })();

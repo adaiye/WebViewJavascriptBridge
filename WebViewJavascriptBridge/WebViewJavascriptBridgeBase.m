@@ -150,6 +150,10 @@ static bool logging = false;
     }
 }
 
+-(void)logUnSupportedProcotocolScheme:(NSURL*)url {
+    NSLog(@"WebViewJavascriptBridge: WARNING: UnSupportedProcotocolScheme %@://%@", kCustomProtocolScheme, [url path]);
+}
+
 -(void)logUnkownMessage:(NSURL*)url {
     NSLog(@"WebViewJavascriptBridge: WARNING: Received unknown WebViewJavascriptBridge command %@://%@", kCustomProtocolScheme, [url path]);
 }

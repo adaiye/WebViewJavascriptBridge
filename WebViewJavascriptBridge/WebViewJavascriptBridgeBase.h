@@ -36,6 +36,7 @@ typedef NSDictionary WVJBMessage;
 - (void)injectJavascriptFile:(BOOL)shouldInject;
 - (BOOL)isCorrectProcotocolScheme:(NSURL*)url;
 - (BOOL)isCorrectHost:(NSURL*)urll;
+- (void)logUnSupportedProcotocolScheme:(NSURL*)url;
 - (void)logUnkownMessage:(NSURL*)url;
 - (void)dispatchStartUpMessageQueue;
 - (NSString *)webViewJavascriptCheckCommand;

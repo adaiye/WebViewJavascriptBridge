@@ -127,7 +127,9 @@ decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
         } else {
             [_base logUnkownMessage:url];
         }
-        [webView stopLoading];
+//        [webView stopLoading];
+    }else {
+        [_base logUnSupportedProcotocolScheme:url];
     }
     
     if (strongDelegate && [strongDelegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)]) {
@@ -164,7 +166,14 @@ didFailNavigation:(WKNavigation *)navigation
 
 - (NSString*) _evaluateJavascript:(NSString*)javascriptCommand
 {
-    [_webView evaluateJavaScript:javascriptCommand completionHandler:nil];
+    NSString *js = [javascriptCommand copy];
+    [_webView evaluateJavaScript:javascriptCommand completionHandler:^(id _Nullable obj, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"JsBridge Error: %@", js);
+        }else{
+            NSLog(@"JsBridge Suc: %@", js);
+        }
+    }];
     return NULL;
 }
 
